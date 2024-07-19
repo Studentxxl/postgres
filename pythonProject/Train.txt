@@ -1,0 +1,38 @@
+CREATE TABLE s_user (id SERIAL PRIMARY KEY, login VARCHAR(12), passwd VARCHAR(12), UNIQUE(login));
+
+CREATE TABLE user_info (id SERIAL PRIMARY KEY, user_name VARCHAR(12), info TEXT, f_user, FOREIGN KEY (user_name) REFERENCES s_user (login) ON UPDATE CASCADE);
+
+ALTER TABLE s_user ADD phone DECIMAL NOT NULL DEFAULT 00;
+ALTER TABLE s_user DROP COLUMN phone;
+
+ALTER TABLE s_user ADD phone2 TEXT NOT NULL DEFAULT 'нет значения';
+
+ALTER TABLE s_user ALTER COLUMN phone2 TYPE VARCHAR(20);
+ALTER TABLE s_user ALTER COLUMN phone2 SET NOT NULL;
+ALTER TABLE s_user RENAME COLUMN phone2 TO phone3;
+
+INSERT INTO s_user (login, passwd, phone, phone3) VALUES ( 'den2', '2we', 377142, 'no');
+
+SELECT login, passwd FROM s_user;
+SELECT phone*2 FROM s_user;
+
+UPDATE user_info SET info = 'not status' WHERE user_name = 'den';
+
+DELETE FROM s_user WHERE login = 'den2';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

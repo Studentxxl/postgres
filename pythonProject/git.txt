@@ -1,0 +1,28 @@
+
+* Установка
+sudo apt update
+sudo apt install git
+git --version
+
+* Выполните следующие команды, заменяя параметры в квадратных скобках
+* на ваши реальные данные:
+git config --global user.name [Jake]
+git config --global user.email [exampleemail@gmail.com]
+* Текущие настройки Git доступны к просмотру после ввода команды:
+git config --list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

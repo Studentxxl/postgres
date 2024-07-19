@@ -1,0 +1,70 @@
+
+добавить строку
+INSERT INTO users (login, passw) VALUES ('DEN1s', '2we34');
+
+добавить несколько строк
+INSERT INTO products  (ProductName, Manufacturer, ProductCount, Price) VALUES
+('iPhone 6', 'Apple', 3, 36000),
+('Galaxy S8', 'Samsung', 2, 46000)
+('Galaxy S8 Plus', 'Samsung', 1, 56000)
+
+возврат не заполненых клеток
+INSERT INTO comp (chapter) VALUES ('comp') RETURNING id, model;
+
+прочитать все
+SELECT * FROM users;
+
+удалить базу
+DROP DATABASE test5;
+
+Фильтрация. WHERE
+WHERE условие
+=: сравнение на равенство
+<>: сравнение на неравенство
+!=: сравнение на неравенство
+<: меньше чем
+>: больше чем
+<=: меньше чем или равно
+>=: больше чем или равно
+SELECT * FROM Products WHERE Manufacturer = 'Apple';
+SELECT * FROM Products WHERE Price < 39000;
+
+
+Логические операторы
+AND: операция логического И. Она объединяет два выражения:
+OR: операция логического ИЛИ. Она также объединяет два выражения:	
+SELECT * FROM Products WHERE Manufacturer = 'Samsung' AND Price > 50000;
+SELECT * FROM Products WHERE Manufacturer = 'Samsung' OR Price > 50000;
+
+NOT: операция логического отрицания. Если выражение в этой операции ложно, то общее условие истинно.	
+SELECT * FROM Products WHERE NOT Manufacturer = 'Samsung';
+
+
+IS NULL
+Ряд столбцов может допускать значение NULL. Это значение не эквивалентно пустой строке ''. NULL представляет полное отсутствие какого-либо значения. И для проверки на наличие подобного значения применяется оператор IS NULL.
+SELECT * FROM Products WHERE ProductCount IS NULL;
+SELECT * FROM Products WHERE ProductCount IS NOT NULL;
+
+
+Обновление данных. Команда UPDATE
+UPDATE имя_таблицы
+SET столбец1 = значение1, столбец2 = значение2, ... столбецN = значениеN[WHERE условие_обновления]
+все столбцы
+UPDATE tr1 SET exist = TRUE;
+одна строка
+UPDATE Products SET Manufacturer = 'Samsung Inc.' WHERE Manufacturer = 'Samsung';
+несколько столбцов
+UPDATE Products SET Manufacturer = 'Samsung', ProductCount = ProductCount + 3 WHERE Manufacturer = 'Samsung Inc.';
+
+
+Удаление данных. Команда DELETE
+DELETE FROM имя_таблицы [WHERE условие_удаления]
+DELETE FROM Products WHERE Manufacturer='Apple';
+DELETE FROM Products WHERE Manufacturer='HTC' AND Price < 15000;
+
+
+
+
+
+
+

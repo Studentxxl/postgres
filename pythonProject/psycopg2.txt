@@ -1,0 +1,87 @@
+
+
+
+
+
+
+
+
+
+
+
+#  Добавление данных, переданных в кортеже
+conn = psycopg2.connect(dbname="metanit", user="postgres", password="2we34yy", host="127.0.0.1")
+cursor = conn.cursor()
+# данные для добавления
+bob = ("Bob", 42)# кортеж
+cursor.execute("INSERT INTO people (name, age) VALUES (%s, %s)", bob)
+conn.commit()
+print("Данные добавлены")
+cursor.close()
+conn.close()
+
+
+# Множественная вставка
+conn = psycopg2.connect(dbname="metanit", user="postgres", password="2we34yy", host="127.0.0.1")
+cursor = conn.cursor()
+# данные для добавления
+people = [("Sam", 28), ("Alice", 33), ("Kate", 25)]
+cursor.executemany("INSERT INTO people (name, age) VALUES (%s, %s)", people)
+conn.commit()
+print("Данные добавлены")
+cursor.close()
+conn.close()
+
+
+#  fetchall() (возвращает список со всеми строками)
+#  fetchmany() (возвращает указанное количество строк)
+#  fetchone() (возвращает одну в наборе строку)
+
+# Получение всех строк
+conn = psycopg2.connect(dbname="metanit", user="postgres", password="2we34yy", host="127.0.0.1")
+cursor = conn.cursor()
+# получаем все данные из таблицы people
+cursor.execute("SELECT * FROM people")
+print(cursor.fetchall())
+cursor.close()
+conn.close()
+
+
+# Получение части строк
+conn = psycopg2.connect(dbname="metanit", user="postgres", password="2we34yy", host="127.0.0.1")
+cursor = conn.cursor()
+cursor.execute("SELECT * FROM people")
+# извлекаем первые 3 строки в полученном наборе
+print(cursor.fetchmany(3))
+# извлекаем следующие 3 строки
+print(cursor.fetchmany(3))
+cursor.close()
+conn.close()
+
+
+# Получение одной строки
+conn = psycopg2.connect(dbname="metanit", user="postgres", password="2we34yy", host="127.0.0.1")
+cursor = conn.cursor()
+cursor.execute("SELECT * FROM people")
+# извлекаем одну строку
+print(cursor.fetchone())  # (1, 'Tom', 38)
+cursor.close()
+conn.close()
+
+
+# Получение определенных значений из строки
+conn = psycopg2.connect(dbname="metanit", user="postgres", password="2we34yy", host="127.0.0.1")
+cursor = conn.cursor()
+cursor.execute("SELECT name, age FROM people WHERE id=2")
+# раскладываем кортеж на две переменных
+name, age = cursor.fetchone()
+print(f"Name: {name}    Age: {age}")
+
+
+
+
+
+
+
+
+

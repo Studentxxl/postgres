@@ -1,0 +1,21 @@
+
+создать базу
+CREATE DATABASE base_name;
+
+подключиться
+\c base_name
+
+создать таблицу
+CREATE TABLE table_name (колонка ТИП ДАННЫХ, колонка ТИП ДАННЫХ, АТРИБУТЫ);
+пример
+CREATE TABLE Customers
+( 
+Id SERIAL PRIMARY KEY,
+    FirstName CHARACTER VARYING(20),
+    LastName CHARACTER VARYING(20),
+    Email CHARACTER VARYING(30),
+    Phone CHARACTER VARYING(30),
+    Age INTEGER,
+    UNIQUE(Email), 
+    UNIQUE(Phone)
+    );

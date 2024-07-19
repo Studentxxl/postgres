@@ -1,0 +1,30 @@
+
+* purge
+sudo apt-get --purge remove pgadmin3
+sudo apt-get --purge remove postgresql\*
+sudo rm -r /etc/postgresql-common/
+sudo rm -r /var/lib/postgresql/
+sudo userdel -r postgres
+sudo groupdel postgres
+
+
+* install
+sudo apt-get update
+sudo apt install postgresql -y
+psql --version
+
+
+* change pass
+sudo -u postgres psql
+ALTER USER postgres PASSWORD 'RTy567';
+
+* status
+sudo service postgresql status
+
+
+
+
+
+
+
+

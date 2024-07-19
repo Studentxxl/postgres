@@ -1,0 +1,6 @@
+* connect
+sudo su postgres
+psql 
+\c table_name
+\conninfo   - инфо о подключении
+\
